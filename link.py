@@ -24,8 +24,3 @@ class MagicalLink:
         runes = Ziruphtable("Fa Ur Dorn Os Rit Ka Ken Hagal Not Is Jera Ar Sig Tyr Bar Man Yr Eh Vor Gar".split())
         carrier = MagicalLink(runes[runes[runes[self.link, "Rit"], "Vor"], "Dorn"])
         return carrier+target
-
-A = MagicalLink("ABC")
-B = MagicalLink("GHJGH")
-C = MagicalLink("Target")
-print((A+B).sendto(C))
