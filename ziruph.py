@@ -24,6 +24,7 @@ class Ziruphtable:
                 counter = (counter+1)%len(self.alphabet)
 
     def __getitem__(self, args):
+        """Format: [input word, power to convolve with]. Will error if power isn't in the list given in initialization."""
         (word, power) = args
         if power not in self.powers:
             print("ERROR: {1} requested to be ziruph'd with {0}, but {0} does not exist in the table as a power.".format(power, word))
