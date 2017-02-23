@@ -24,3 +24,11 @@ class MagicalLink:
         runes = Ziruphtable("Fa Ur Dorn Os Rit Ka Ken Hagal Not Is Jera Ar Sig Tyr Bar Man Yr Eh Vor Gar".split())
         carrier = MagicalLink(runes[runes[runes[self.link, "Rit"], "Vor"], "Dorn"])
         return carrier+target
+
+    def freeze(self):
+        runes = Ziruphtable("Fa Ur Dorn Os Rit Ka Ken Hagal Not Is Jera Ar Sig Tyr Bar Man Yr Eh Vor Gar".split())
+        self.link = runes[runes[runes[self.link, "Is"], "Jera"], "Ka"]
+
+    def heal(self):
+        runes = Ziruphtable("Fa Ur Dorn Os Rit Ka Ken Hagal Not Is Jera Ar Sig Tyr Bar Man Yr Eh Vor Gar".split())
+        self.link = runes[runes[runes[self.link, "Ur"], "Tyr"], "Ar"]
