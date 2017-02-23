@@ -44,7 +44,7 @@ class Ziruphtable:
 
     def __str__(self):
         output = " ".join(self.powers) + "   Input\n"
-        for key, row in sorted(self.table.items()):
+        for key, row in sorted(self.table.items(), reverse=True):
             for power in self.powers:
                 output += self.table[key][power]
                 output += " "*len(power)
