@@ -18,7 +18,7 @@ class MagicalLink:
         return MagicalLink(result)
 
     def __str__(self):
-        return "Link[{0}]".format(self.link)
+        return "Link[*{0}*]".format(self.link)
 
     def sendto(self, target):
         """Packs the link into a carrier designed to bring it somewhere fast, and returns the combination of that with the target."""
