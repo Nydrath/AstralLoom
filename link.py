@@ -24,6 +24,7 @@ class MagicalLink:
         """Packs the link into a carrier designed to bring it somewhere fast, and returns the combination of that with the target."""
         runes = Ziruphtable("Fa Ur Dorn Os Rit Ka Ken Hagal Not Is Jera Ar Sig Tyr Bar Man Yr Eh Vor Gar".split())
         carrier = MagicalLink(runes[runes[runes[self.link, "Rit"], "Vor"], "Dorn"])
+        target = MagicalLink(runes[target.link, "Man"])
         return carrier+target
 
     def freeze(self):
