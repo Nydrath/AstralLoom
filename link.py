@@ -31,8 +31,3 @@ class MagicalLink:
         """Packs the current link with very static and heavy runes designed to keep it together and in one place."""
         runes = Ziruphtable("Fa Ur Dorn Os Rit Ka Ken Hagal Not Is Jera Ar Sig Tyr Bar Man Yr Eh Vor Gar".split())
         self.link = runes[runes[runes[self.link, "Is"], "Jera"], "Ka"]
-
-    def heal(self):
-        """Packs the current link with a generic set of healing runes. Made with natural beings in mind, what happens with artificial entities is undefined."""
-        runes = Ziruphtable("Fa Ur Dorn Os Rit Ka Ken Hagal Not Is Jera Ar Sig Tyr Bar Man Yr Eh Vor Gar".split())
-        self.link = runes[runes[runes[self.link, "Ur"], "Tyr"], "Ar"]
