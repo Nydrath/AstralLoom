@@ -1,7 +1,7 @@
 
 from ziruph import Ziruphtable
 
-class MagicalLink:
+class MagiLink:
     def __init__(self, link):
         self.link = link
 
@@ -15,7 +15,7 @@ class MagicalLink:
         for idx, c in enumerate(origin):
             result += multiplexer[c, addon[idx%len(addon)]]
 
-        return MagicalLink(result)
+        return MagiLink(result)
 
     def __str__(self):
         return "Link[*{0}*]".format(self.link)
@@ -25,11 +25,11 @@ class MagicalLink:
         runes = Ziruphtable("Fa Ur Dorn Os Rit Ka Ken Hagal Not Is Jera Ar Sig Tyr Bar Man Yr Eh Vor Gar".split())
         rev_runes = Ziruphtable("Fa Ur Dorn Os Rit Ka Ken Hagal Not Is Jera Ar Sig Tyr Bar Man Yr Eh Vor Gar"[::-1].split())
         # Prepare the packet
-        carrier = MagicalLink(runes[self.link, ("Rit", "Vor", "Dorn")])
+        carrier = MagiLink(runes[self.link, ("Rit", "Vor", "Dorn")])
         # Send
         target += carrier
         # Unpack packet
-        target = MagicalLink(rev_runes[target.link, ("nroD", "roV", "tiR")])
+        target = MagiLink(rev_runes[target.link, ("nroD", "roV", "tiR")])
         return target
 
     def freeze(self):
