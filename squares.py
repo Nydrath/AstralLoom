@@ -4,9 +4,9 @@ from PIL import Image
 from PIL import ImageDraw
 
 class MagicalSquare:
-    def __init__(self, planet):
-        self.planetidx = "Saturn Jupiter Mars Sun Venus Mercury Moon Earth".split().index(planet)+3
-        self.createsq(self.planetidx)
+    def __init__(self, size):
+        self.size = size
+        self.createsq(self.size)
         self.mutatesq()
 
     def __str__(self):
@@ -100,39 +100,3 @@ class MagicalSquare:
             return self.sumofdigits(a)
         else:
             return int(a)
-
-    def __getitem__(self, intent):
-
-        # COMPLETELY BROKEN, RETHINK
-
-        intent = "".join([c for c in intent if c.isalpha()]).lower()
-        S = 0
-        for c in intent:
-            number = ((ord(c)-ord('a'))%9+1)*10**int((ord(c)-ord('a'))/9)
-            S += number
-        #imagescale = 100
-        #border = int(imagescale*1.0)
-        #im = Image.new("L", (planet*imagescale+2*border, planet*imagescale+2*border), color=255)
-        #drawer = ImageDraw.Draw(im)
-        #dotsize = int(imagescale*0.4/math.sqrt(2))
-        outputsq;
-        x, y = 0, 0
-        for i in range(self.planetidx**2):
-            if self.sumofdigits(str(self.square[x][y])+str(S)[i%len(str(S))]) == self.planetidx:
-                print(self.square[x][y])
-                outputsq[x][y] = "#"*(int(math.log10(len(self.square)**2))+1)
-                #drawer.ellipse((x*imagescale-dotsize+border, y*imagescale-dotsize+border, x*imagescale+dotsize+border, y*imagescale+dotsize+border), fill=0)
-            else:
-                outputsq[x][y] = " "*(int(math.log10(len(self.square)**2))+1)
-            x = (x+1)%self.planetidx
-            if x == 0:
-                y = (y+1)%self.planetidx
-
-        #im.save(intent+".png")
-        output = 
-        return str(outputsq)
-
-
-
-a = MagicalSquare("Mercury")
-print(a["ABA"])
