@@ -25,17 +25,14 @@ class MagicalLink:
         runes = Ziruphtable("Fa Ur Dorn Os Rit Ka Ken Hagal Not Is Jera Ar Sig Tyr Bar Man Yr Eh Vor Gar".split())
         rev_runes = Ziruphtable("Fa Ur Dorn Os Rit Ka Ken Hagal Not Is Jera Ar Sig Tyr Bar Man Yr Eh Vor Gar"[::-1].split())
         # Prepare the packet
-        carrier = MagicalLink(runes[runes[runes[self.link, "Rit"], "Vor"], "Dorn"])
-        # Prepare receival
-        target = MagicalLink(runes[target.link, "Man"])
+        carrier = MagicalLink(runes[self.link, ("Rit", "Vor", "Dorn")])
         # Send
         target += carrier
         # Unpack packet
-        target = MagicalLink(rev_runes[target.link, "naM"])
-        target = MagicalLink(rev_runes[rev_runes[rev_runes[target.link, "nroD"], "roV"], "tiR"])
+        target = MagicalLink(rev_runes[target.link, ("nroD", "roV", "tiR")])
         return target
 
     def freeze(self):
         """Packs the current link with very static and heavy runes designed to keep it together and in one place."""
         runes = Ziruphtable("Fa Ur Dorn Os Rit Ka Ken Hagal Not Is Jera Ar Sig Tyr Bar Man Yr Eh Vor Gar".split())
-        self.link = runes[runes[runes[self.link, "Is"], "Jera"], "Ka"]
+        self.link = runes[self.link, ("Is", "Jera", "Ka")]
