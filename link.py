@@ -13,7 +13,7 @@ class MagicalLink:
         multiplexer = Ziruphtable([c for c in addon])
         result = ""
         for idx, c in enumerate(origin):
-            result += multiplexer[c.lower(), addon[idx%len(addon)]]
+            result += multiplexer[c, addon[idx%len(addon)]]
 
         return MagicalLink(result)
 
