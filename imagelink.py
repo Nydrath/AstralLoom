@@ -3,7 +3,7 @@ import json
 import os
 import random
 
-from link import MagiLink
+from link import BaseLink
 
 def gematria(s):
     output = 0
@@ -16,7 +16,7 @@ def gematria(s):
             output += int(c)
     return output
 
-class ImageLink(MagiLink):
+class ImageLink(BaseLink):
     def __init__(self, path):
         with open("client_data.json", "r") as f:
             clientdata = json.load(f)
