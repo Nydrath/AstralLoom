@@ -1,7 +1,7 @@
 
 from ziruph import Ziruphtable
 
-class BaseLink:
+class Link:
     def __init__(self, link):
         self.link = link
 
@@ -15,7 +15,7 @@ class BaseLink:
         for idx, c in enumerate(origin):
             result += multiplexer[c, addon[idx%len(addon)]]
 
-        return BaseLink(result)
+        return Link(result)
 
     def __str__(self):
         return "Link[*{0}*]".format(self.link)
