@@ -1,6 +1,6 @@
 # Astral Loom
 #### General idea
-The goal of this library is to provide and easy, flexible and extensible way to alchemically add, mix and blend together any kind of magical energy. It does so by storing instead of a direct energy only a generalized *link* to this energy, which can be moved around, stored and sent just like any other programming object. The link framework also provides built-in methods to join together two links, creating a composite energy link that can be further processed.
+The goal of this library is to provide an easy, flexible and extensible way to alchemically add and blend together any kind of magical energy. It does so by storing instead of a direct energy only a generalized *link* to this energy, which can be moved around, stored and sent just like any other programming object. The link framework also provides built-in methods to join together two links, creating a composite energy link that can be further processed.
 
 AstralLoom also has a system that converts any image given, whether it be of a face or of a sigil, to the internal link representation; sigil libraries and collections (eg. runes) can be used and mixed as well.
 
