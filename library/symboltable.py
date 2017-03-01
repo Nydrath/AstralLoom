@@ -4,7 +4,7 @@ from link import Link
 # I have no further information on what they are or where they come from,
 # the only place I was able to find them online are some pintrest images.
 
-def buildsymboltable():
+def build():
     symboltable = {}
     symboltable["air"] = Link('NRnGnZTdoHOlZMjMfMFpXMzp')
     symboltable["banish"] = Link('TSIufEHPmxSsjEgRfUHECY')
