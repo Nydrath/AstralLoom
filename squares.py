@@ -1,7 +1,5 @@
 import math
 import random
-from PIL import Image
-from PIL import ImageDraw
 
 class MagicalSquare:
     def __init__(self, size):
