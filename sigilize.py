@@ -2,8 +2,11 @@ from PIL import Image, ImageDraw
 
 from functions import gematria
 from squares import MagicalSquare
+from link import Link
 
 def with_square(sigil):
+    if isinstance(sigil, Link):
+        sigil = sigil.link
     sq = MagicalSquare(49)
     im = Image.new("L", (490, 490))
     pts = []
