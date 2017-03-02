@@ -98,3 +98,13 @@ class MagicalSquare:
         for r in range(random.randint(1, 3)):
             self.square = [list(x) for x in zip(*self.square[::-1])]
 
+    def __getitem__(self, n):
+        if n > len(self.square)**2:
+            print("Error: MagicalSquare.find() called with parameter {0}, but square only has values up to {1}".format(n, len(self.square)**2))
+            raise LookupError
+        for idx, row in enumerate(self.square):
+            for idy, element in enumerate(row):
+                if element == n:
+                    return (idx, idy)
+        print("Error: MagicalSquare.find() called with parameter {0}, was not found in the square.".format(n))
+        raise LookupError
