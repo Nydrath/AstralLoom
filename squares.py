@@ -98,10 +98,3 @@ class MagicalSquare:
         for r in range(random.randint(1, 3)):
             self.square = [list(x) for x in zip(*self.square[::-1])]
 
-
-    def sumofdigits(self, s):
-        a = str(sum([int(c) for c in s]))
-        if len(a) > 1:
-            return self.sumofdigits(a)
-        else:
-            return int(a)

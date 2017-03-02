@@ -4,17 +4,7 @@ import os
 import random
 
 from link import Link
-
-def gematria(s):
-    output = 0
-    for c in s.lower():
-        if c.isalpha():
-            output += ((ord(c)-ord('a'))%9+1) * 10**int((ord(c)-ord('a'))/9)
-        else:
-            # If there's a character that isn't a letter, I'm assuming it's a number
-            # So I'm going to just interpret it literally to the gematria
-            output += int(c)
-    return output
+from functions import gematria
 
 class ImageLink(Link):
     def __init__(self, path):
