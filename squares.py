@@ -11,7 +11,14 @@ class MagicalSquare:
         n = (len(self.square)-1) + len(self.square)*(int(math.log10(len(self.square)**2))+1) + 2
         output = "-"*n+"\n"
         for row in zip(*self.square):
-            output += "|"+" ".join([str(x).zfill(int(math.log10(len(row)**2))+1) for x in row])+"|\n"
+            output += "|"
+            numbers = []
+            for x in row:
+                s = str(x).zfill(int(math.log10(len(row)**2))+1)
+                s = " "*(len(s)-len(s.lstrip("0")))+s.lstrip("0")
+                numbers.append(s)
+            output += " ".join(numbers)
+            output += "|\n"
         return output + "-"*n
 
     def getluxbox(self, x, y, m):
