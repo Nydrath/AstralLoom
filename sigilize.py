@@ -46,5 +46,5 @@ def add_background(sigil, background, transparency=1.0):
     for x in range(sig.size[0]):
         for y in range(sig.size[1]):
             if sig.getpixel((x, y)) != (255, 255, 255):
-                im.putpixel((x, y), sig.getpixel((x, y))+(int(transparency*255),))
+                im.putpixel((x, y), tuple(int(transparency*sig.getpixel((x, y))[i] + (1-transparency)*im.getpixel((x, y))[i]) for i in range(3)))
     im.save(sigil+".png")
