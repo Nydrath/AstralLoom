@@ -5,7 +5,7 @@ from functions import gematria
 from squares import MagicalSquare
 from link import Link
 
-def with_square(sigil):
+def with_square(sigil, width=3):
     if isinstance(sigil, Link):
         sigil = sigil.link
     sq = MagicalSquare(49)
@@ -16,10 +16,10 @@ def with_square(sigil):
             pts.append(tuple(10*i for i in sq[gematria(c)]))
     draw = ImageDraw.Draw(im)
     draw.rectangle([(0, 0), im.size], fill=255)
-    draw.line(pts, fill=0)
+    draw.line(pts, fill=0, width=width)
     im.save(sigil+".png")
 
-def with_coords(sigil, color=(0, 0, 0)):
+def with_coords(sigil, color=(0, 0, 0), width=3):
     if isinstance(sigil, Link):
         sigil = sigil.link
     border = 40
@@ -32,7 +32,7 @@ def with_coords(sigil, color=(0, 0, 0)):
             pts.append(tuple(border+distance*(ord(c.lower())-ord('a')) for c in pair))
     draw = ImageDraw.Draw(im)
     draw.rectangle([(0, 0), im.size], fill=(255, 255, 255))
-    draw.line(pts, fill=color, width=5)
+    draw.line(pts, fill=color, width=width)
     im.save(sigil+".png")
 
 def add_background(sigil, background, transparency=1.0):
