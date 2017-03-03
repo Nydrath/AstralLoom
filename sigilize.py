@@ -1,4 +1,5 @@
 from PIL import Image, ImageDraw
+import random
 
 from functions import gematria
 from squares import MagicalSquare
@@ -32,4 +33,18 @@ def with_coords(sigil):
     draw = ImageDraw.Draw(im)
     draw.rectangle([(0, 0), im.size], fill=255)
     draw.line(pts, fill=0)
+
+def add_background(sigil, background):
+    if isinstance(sigil, Link):
+        sigil = sigil.link
+    sig = Image.open(sigil+".png")
+    bg = Image.open(background)
+    im = Image.new("RGB", sig.size)
+    coords = tuple(-random.randint(0, bg.size[i]-sig.size[i]) for i in range(2))
+    im.paste(bg, coords)
+    for x in range(sig.size[0]):
+        for y in range(sig.size[1]):
+            # Warning: This only works if the sigil image is in mode 'L'
+            if sig.getpixel((x, y)) != 255:
+                im.putpixel((x, y), sig.getpixel((x, y)))
     im.save(sigil+".png")
