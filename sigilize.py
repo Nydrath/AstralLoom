@@ -32,7 +32,8 @@ def with_coords(sigil):
             pts.append(tuple(border+distance*(ord(c.lower())-ord('a')) for c in pair))
     draw = ImageDraw.Draw(im)
     draw.rectangle([(0, 0), im.size], fill=255)
-    draw.line(pts, fill=0)
+    draw.line(pts, fill=0, width=5)
+    im.save(sigil+".png")
 
 def add_background(sigil, background):
     if isinstance(sigil, Link):
