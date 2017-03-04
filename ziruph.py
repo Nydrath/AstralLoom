@@ -27,8 +27,8 @@ class Ziruphtable:
         """Format: [input word, power to convolve with]. Will error if power isn't in the list given in initialization. Power can also be a tuple of powers to sequentially use."""
         (word, powers) = args
 
-        if not isinstance(powers, (list, tuple)):
-            powers = (powers)
+        if isinstance(powers, str):
+            powers = [powers]
 
         for power in powers:
             if power not in self.powers:
