@@ -1,22 +1,29 @@
 
+from functions import gematria
 from ziruph import Ziruphtable
+import string
 
 class Link:
     def __init__(self, link):
         self.link = link
 
-    def __add__(self, other):
-        # Send the smaller link to the big one
-        origin = max(self, other, key=lambda x: len(x.link))
-        addon = min(self, other, key=lambda x: len(x.link))
-        return Link(origin.mixwith(addon).link)
+    def ziruph(self, other):
+        p = string.ascii_lowercase
+        if abs(self) > len(string.ascii_lowercase):
+            p = " "*(abs(self) - len(string.ascii_lowercase)) + p
+        else:
+            p = p[:abs(self)]
+        z = Ziruphtable(p)
+        print(z)
 
-    def mixwith(self, other):
-        multiplexer = Ziruphtable([c for c in other.link])
-        result = ""
-        for idx, c in enumerate(self.link):
-            result += multiplexer[c, other.link[idx%len(other.link)]]
-        return Link(result)
+        output = ""
+        n = min(len(self.link), len(other.link))
+        for i in range(n):
+            output += z[self.link[i], other.link[i]]
+        self.link = output
 
     def __str__(self):
         return "Link[*{0}*]".format(self.link)
+
+    def __abs__(self):
+        return gematria(self.link)

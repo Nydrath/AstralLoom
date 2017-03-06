@@ -18,7 +18,6 @@ class Ziruphtable:
                 columns = self.powers[::-1]
             else:
                 columns = self.powers[:]
-
             for column in columns:
                 self.table[row][column] = self.alphabet[counter]
                 counter = (counter+1)%len(self.alphabet)
