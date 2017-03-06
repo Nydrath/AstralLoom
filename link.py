@@ -8,13 +8,12 @@ class Link:
         self.link = link
 
     def ziruph(self, other):
-        p = string.ascii_lowercase
-        if abs(self) > len(string.ascii_lowercase):
-            p = " "*(abs(self) - len(string.ascii_lowercase)) + p
+        p = string.ascii_letters
+        if abs(self) > len(p):
+            p = " "*(abs(self) - len(p)) + p
         else:
             p = p[:abs(self)]
         z = Ziruphtable(p)
-        print(z)
 
         output = ""
         n = min(len(self.link), len(other.link))
@@ -23,7 +22,10 @@ class Link:
         self.link = output
 
     def __str__(self):
-        return "Link[*{0}*]".format(self.link)
+        return "Link[*{0}*] | ngem = {1}".format(self.link, self.ngem())
 
     def __abs__(self):
         return gematria(self.link)
+
+    def ngem(self):
+        return abs(self)/len(self.link)
