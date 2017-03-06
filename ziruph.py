@@ -46,6 +46,33 @@ class Ziruphtable:
             word = output
         return word
 
+    def reverse(self, args):
+
+        # BROKEN
+
+        (output, powers) = args
+
+        if isinstance(powers, str):
+            powers = [powers]
+
+        for power in powers:
+            if power not in self.powers:
+                print("ERROR: {1} requested to be ziruph'd with {0}, but {0} does not exist in the table as a power.".format(power, word))
+                raise LookupError
+
+            inputs = [""]
+            for c in output:
+                if c.isalpha():
+                    results = [key for key, row in self.table.items() if self.table[key][power] == c]
+                    tmp = []
+                    for r in results:
+                        for i in inputs:
+                            tmp.append(i+r)
+                    if len(tmp) > 0:
+                        inputs = tmp[:]
+
+        return inputs
+
     def __str__(self):
         output = " ".join(self.powers) + "   Input\n"
         for key, row in sorted(self.table.items(), reverse=True):
