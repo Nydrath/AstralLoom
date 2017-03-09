@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageChops
 import numpy as np
 from math import floor, ceil
 import string
@@ -8,16 +8,15 @@ IMAGE_HEIGHT = IMAGE_WIDTH
 IMAGE_SIZE = (IMAGE_WIDTH, IMAGE_HEIGHT)
 FONT_SIZE = 100
 
-full_link = "ED"
-links = [full_link[i:i+2] for i in range(0, len(full_link), 2)]
+full_link = "WRNDKZ"
+links = [full_link[i:i+3] for i in range(0, len(full_link), 2)]
+font = ImageFont.truetype("fonts/enochian.ttf", size=FONT_SIZE)
 sigils = []
 for idx1,link in enumerate(links):
-    font = ImageFont.truetype("fonts/magi.ttf", size=FONT_SIZE)
     im = Image.new("L", IMAGE_SIZE)
     imdraw = ImageDraw.Draw(im)
     w, h = font.getsize(link[0])
     imdraw.text(((IMAGE_WIDTH-w)/2, (IMAGE_HEIGHT-h)/2), link[0], fill=255, font=font)
-    im.save("testbase.png")
     for idx2,letter in enumerate(link[1:]):
         imdata = np.asarray(im).T
         tmp = Image.new("L", IMAGE_SIZE)
@@ -25,7 +24,6 @@ for idx1,link in enumerate(links):
         w, h = font.getsize(letter)
         tmpdraw.text(((IMAGE_WIDTH-w)/2, (IMAGE_HEIGHT-h)/2), letter, fill=255, font=font)
         tmp = tmp.crop(tmp.getbbox())
-        tmp.save("testtmp.png")
         tmpdata = np.asarray(tmp).T
         w, h = tmp.size
         xoptimal, yoptimal = (0, 0)
@@ -38,14 +36,10 @@ for idx1,link in enumerate(links):
                 if s < voptimal:
                     voptimal = s
                     xoptimal, yoptimal = x, y
-        #w, h = font.getsize(letter)
-        #imdraw.text((xoptimal-w/2, yoptimal-h/2), letter, fill=255, font=font)
         t = Image.new("L", IMAGE_SIZE)
         t.paste(tmp, (xoptimal, yoptimal))
-        im = Image.alpha_composite(im, t)
-        #im = Image.blend(im, t, 0.5)
-        #im.paste(tmp, (xoptimal, yoptimal))
-    sigils.append(im)#.crop(im.getbbox()))
+        im = ImageChops.lighter(im, t)
+    sigils.append(im.crop(im.getbbox()))
 
 for idx,sigil in enumerate(sigils):
     sigil.save(str(idx)+".png")
