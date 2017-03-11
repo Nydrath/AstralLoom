@@ -56,10 +56,10 @@ for idx1,link in enumerate(links):
         t = Image.new("L", IMAGE_SIZE)
         t.paste(tmp, (xoptimal, yoptimal))
         im = ImageChops.lighter(im, t)
-    im = im.filter(ImageFilter.MaxFilter(5))
-    im = im.filter(ImageFilter.MinFilter(5))
-    # Removes gray squares but also destroys the anti-aliasing
-    #im = Image.eval(im, lambda x: 255*(x==255))
+    t = im.filter(ImageFilter.MaxFilter(int(5 * FONT_SIZE / 100)))
+    t = t.filter(ImageFilter.MinFilter(int(5 * FONT_SIZE / 100)))
+    t = Image.eval(t, lambda x: 255*(x==255))
+    im = ImageChops.lighter(im, t)
     sigils[int(idx1/LINE_LENGTH)].append(im.crop(im.getbbox()))
 
 maxwidth = 0
