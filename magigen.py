@@ -4,19 +4,22 @@ from math import floor, ceil
 import string
 import random
 
-IMAGE_WIDTH = 600
+IMAGE_WIDTH = 300
 IMAGE_HEIGHT = IMAGE_WIDTH
 IMAGE_SIZE = (IMAGE_WIDTH, IMAGE_HEIGHT)
-FONT_SIZE = 300
+FONT_SIZE = 100
 
-LINE_LENGTH = 7
+LINE_LENGTH = 2
+NLINES = 2
 BORDER_WIDTH = int(0.6 * FONT_SIZE)
 LINE_SPACING = int(1.5 * FONT_SIZE)
 
 linksize = 3
-full_link = "".join(["".join(random.sample(string.ascii_uppercase, linksize)) for i in range(49)])
+full_link = "".join(["".join(random.sample(string.ascii_uppercase, linksize)) for i in range(NLINES * LINE_LENGTH)])
 links = [full_link[i:i+linksize] for i in range(0, len(full_link), linksize)]
 fonts = [
+    ImageFont.truetype("fonts/daedra.otf", size=FONT_SIZE),
+    ImageFont.truetype("fonts/falmer.otf", size=FONT_SIZE),
     ImageFont.truetype("fonts/magi.ttf", size=FONT_SIZE),
     ImageFont.truetype("fonts/malachim.ttf", size=FONT_SIZE),
     ImageFont.truetype("fonts/enochian.ttf", size=FONT_SIZE)
