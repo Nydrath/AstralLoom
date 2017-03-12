@@ -87,7 +87,7 @@ maxwidth = 0
 for im in sigils:
     maxwidth = max(im.size[0], maxwidth)
 
-baseim = Image.new("L", (maxwidth*LINE_LENGTH + 2*BORDER_WIDTH, len(sigils)/LINE_LENGTH*LINE_SPACING + 2*BORDER_WIDTH))
+baseim = Image.new("L", (maxwidth*LINE_LENGTH + 2*BORDER_WIDTH, int(len(sigils)/LINE_LENGTH)*LINE_SPACING + 2*BORDER_WIDTH))
 for idx,im in enumerate(sigils):
         t = Image.new("L", baseim.size)
         t.paste(im, (BORDER_WIDTH + maxwidth*(idx%LINE_LENGTH), BORDER_WIDTH + LINE_SPACING*int(idx/LINE_LENGTH)))
