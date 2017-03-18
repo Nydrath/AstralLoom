@@ -42,7 +42,7 @@ class Link:
         return [Link(o) for o in outputs]
 
     def __str__(self):
-        return "Link[*{0}*] | ngem = {1}".format(self.link, self.ngem())
+        return "Link[*{0}*]".format(self.link)
 
     def __abs__(self):
         return gematria(self.link)
