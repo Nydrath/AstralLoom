@@ -1,8 +1,10 @@
 
-from functions import gematria
+import functions
 from ziruph import Ziruphtable
 import string
 import math
+import struct
+import base64
 
 class Link:
     def __init__(self, link):
@@ -45,7 +47,20 @@ class Link:
         return "Link[*{0}*]".format(self.link)
 
     def __abs__(self):
-        return gematria(self.link)
+        return functions.gematria(self.link)
 
     def ngem(self):
         return math.log10(abs(self)/len(self.link))
+
+    def optimal_compression(self):
+        return functions.optimal_compression(self.link)
+
+    def compress(self):
+        self.link = self.optimal_compression()
+        return self
+
+    def binary(self):
+        output = b""
+        for c in self.link:
+            output += struct.pack("=B", ord(c)-ord('A'))
+        return base64.b64encode(output)
